@@ -116,7 +116,7 @@ if (( UID != 0 )); then
 
 fi
 
-alias pkgbak='pacman -Qeqn > $HOME/dotfile/extra/pkgbuilds/pacman_application.txt && pacman -Qeqm > $HOME/dotfile/extra/pkgbuilds/aur_application.txt && pacman -Qq > $HOME/dotfile/extra/pkgbuilds/pkglist.txt'
+alias pkgbak='pacman -Qeqn > ${DOTROOT}/extra/pkgbuilds/pacman_application.txt && pacman -Qeqm > ${DOTROOT}/extra/pkgbuilds/aur_application.txt && pacman -Qq > ${DOTROOT}/extra/pkgbuilds/pkglist.txt'
 # See https://wiki.archlinux.org/title/Pacman/Rosetta
 DISTRO=$(get_distro)
 case $DISTRO in
@@ -168,7 +168,7 @@ case $DISTRO in
         alias cleanup='sudo emerge --ask --depclean --verbose=n'
         alias remove='sudo emerge --ask --depclean --verbose'
         alias search='sudo emerge --search'
-        alias provider='pfl'
+        alias provider='e-file'
 
         ;;
     *unknown*)

@@ -10,8 +10,8 @@ function run {
 
 
 run mpd
-run ~/dotfile/config/scripts/background-changer
-run ~/dotfile/config/scripts/idle.sh
+run ~/.config/scripts/background-changer
+run ~/.config/scripts/idle.sh
 run wl-paste -t text -w cliphist store
 run wl-paste -t image -w cliphist store
 run fcitx5 -d
@@ -39,7 +39,7 @@ run mpd-mpris
 #run xfce4-power-manager --no-daemon
 #run blueman-applet
 #run thunar --daemon
-# sh ~/dotfile/config/scripts/lightsonplus/lightson+ 2>/dev/null
+# sh ${DOTROOT}/config/scripts/lightsonplus/lightson+ 2>/dev/null
 # xautolock -time 30 -locker slock 2>/dev/null
 # swhks
 # pkexec swhkd  # -c $HOME/.config/swhkd/swhkdrc &

@@ -1,3 +1,3 @@
-HISTFILE=$HOME/dotfile/shellrc/histfile
+HISTFILE=${DOTROOT}/shellrc/histfile
 HISTSIZE=1234567890
 SAVEHIST=1234567890

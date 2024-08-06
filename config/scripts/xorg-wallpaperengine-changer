@@ -4,7 +4,7 @@
 	echo  $image
     killall wallengine
     image=~/Games/Steam/steamapps/workshop/content/431960/$(ls ~/Games/Steam/steamapps/workshop/content/431960/ | shuf -n 1)
-	 ~/dotfile/config/wallengine/wallpaperengine/build/wallengine \
+	 ~/.config/wallengine/wallpaperengine/build/wallengine \
         --silent  \
          --screen-root eDP-1 \
          --assets-dir ~/Games/Steam/steamapps/common/wallpaper_engine/assets \

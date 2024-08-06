@@ -11,8 +11,9 @@ PS1='[\u@\h \W]\$ '
 
 export EDITOR='vim'
 
+export DOTROOT="/home/kelen/dotfile"
 
-export SHELLROOT="$HOME/dotfile/shellrc"
+export SHELLROOT="${DOTROOT}/shellrc"
 
 ## environment
 [[ ! -f $SHELLROOT/history.sh ]] || source "$SHELLROOT/history.sh" 2>/dev/null

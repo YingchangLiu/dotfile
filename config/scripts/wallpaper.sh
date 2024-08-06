@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-wallpath=~/dotfile/wallpaper/
+wallpath=${DOTROOT}/wallpaper/
 if [[ -f /tmp/currentwall ]];then
     image=$( find ${wallpath} -type f | grep -v $(cat /tmp/currentwall) | shuf | head -n 1)
 else

@@ -9,16 +9,25 @@ current_shell=$(basename "$SHELL")
 action=${1:-install}
 
 # Get the directory of the script to run the appropriate script
-script_dir=$(dirname "$(realpath "$0")")
+dotfile=$(dirname "$(realpath "$0")")
+
+#  Update the DOTROOT variable in the zshrc file
+if [ -f "$dotfile/zshrc" ]; then
+  sed -i "s|^export DOTROOT=.*|export DOTROOT=\"$dotfile\"|" "$dotfile/zshrc"
+fi
+#  Update the DOTROOT variable in the bashrc file
+if [ -f "$dotfile/bashrc" ]; then
+  sed -i "s|^export DOTROOT=.*|export DOTROOT=\"$dotfile\"|" "$dotfile/bashrc"
 
 # Run the appropriate script based on the current shell
 case $current_shell in
   *bash|*zsh)
     echo "Detected $current_shell shell. Running install_bash.sh with argument '$action'..."
-    $current_shell "$script_dir/bin/install_bashdots" "$action"
+    $current_shell "$dotfile/bin/install_bashdots" "$action"
     ;;
   *)
     echo "Detected $current_shell shell. Running install_posix.sh with argument '$action'..."
-    $current_shell "$script_dir/bin/install_posixdots" "$action"
+    $current_shell "$dotfile/bin/install_posixdots" "$action"
     ;;
 esac
+fi

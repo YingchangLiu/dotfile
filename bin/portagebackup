@@ -1,4 +1,5 @@
 #!/bin/bash
 # Backup portage configuration
-rsync -av  --exclude 'gnupg' /etc/portage/*  ~/dotfile/extra/gentoo_portage/etc/portage/
-rsync -av /var/lib/portage/world* ~/dotfile/extra/gentoo_portage/var/lib/portage/
+rsync -av  --exclude 'gnupg' /etc/portage/*  ${DOTROOT}/extra/gentoo_portage/etc/portage/
+rsync -av /var/lib/portage/world* ${DOTROOT}/extra/gentoo_portage/var/lib/portage/
+echo "Portage configuration backed up to ${DOTROOT}/extra/gentoo_portage"

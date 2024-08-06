@@ -7,7 +7,7 @@ grace=3
 grace-no-mouse
 grace-no-touch
 
-image=$(find ${HOME}/dotfile/wallpaper/ -type f | shuf -n 1)
+image=$(find ${DOTROOT}/wallpaper/ -type f | shuf -n 1)
 
 effect-blur=45x3
 effect-scale=1

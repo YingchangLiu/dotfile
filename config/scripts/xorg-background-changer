@@ -2,7 +2,7 @@
 
 
 while true; do
-    feh --bg-fill $(find ~/dotfile/wallpaper/. -type f | shuf -n 1) &
+    feh --bg-fill $(find ${DOTROOT}/wallpaper/. -type f | shuf -n 1) &
     sleep 29m
 done
 sleep 1m

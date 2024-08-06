@@ -4,8 +4,8 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-export SHELLROOT="$HOME/dotfile/shellrc"
+export DOTROOT="/home/kelen/dotfile"
+export SHELLROOT="${DOTROOT}/shellrc"
 
 # environment
 [[ ! -f $SHELLROOT/history.sh ]] || source "$SHELLROOT/history.sh" 2>/dev/null
