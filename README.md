@@ -113,7 +113,7 @@ The code is available under the [MIT license][license].
 ---
 **Dotfile** ©kelen. Released under the MIT License.
 
-Authored and maintained by kelen.
+Authored and maintained by kelen. Additionally, I have learned and borrowed a lot from the community.
 
 <!-- Link labels: -->
 [license]: LICENSE
