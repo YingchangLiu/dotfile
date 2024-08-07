@@ -6,12 +6,11 @@
 create_directories() {
   local dirs=(
     "$HOME/.fonts"
-    "$HOME/.icons"
-    "$HOME/.themes"
     "$HOME/.config"
     "$HOME/.local/bin"
     "$HOME/.local/share"
     "$HOME/.vscode"
+    "$HOME/.ssh"
   )
   readonly dirs
   for dir in "${dirs[@]}"; do
@@ -96,13 +95,13 @@ install() {
     fi
   done
 
-  # Symlink fonts, icons, themes, config, and local directories
+  # Symlink fonts, config, and local directories
   link_files "$dotfiles/fonts" "$HOME/.fonts"
-  link_files "$dotfiles/icons" "$HOME/.icons"
-  link_files "$dotfiles/themes" "$HOME/.themes"
   link_files "$dotfiles/config" "$HOME/.config"
   link_files "$dotfiles/bin" "$HOME/.local/bin"
   # link_files "$dotfiles/local/share" "$HOME/.local/share"
+  # link_files "$dotfiles/icons" "$HOME/.icons"
+  # link_files "$dotfiles/themes" "$HOME/.themes"
 
   # Special case for vim_runtime
   if [[ -d "$dotfiles/config/vim_runtime" ]]; then
@@ -111,6 +110,11 @@ install() {
 
   # Symlink vscode/argv.json for gnome-keyring
   symlink "$dotfiles/config/vscode/argv.json" "$HOME/.vscode/argv.json"
+
+  # Symlink ssh config, only if it doesn't exist
+  if [[ ! -e "$HOME/.ssh/config" ]]; then
+    symlink "$dotfiles/config/ssh/config" "$HOME/.ssh/config"
+  fi
 }
 
 uninstall() {
@@ -131,19 +135,22 @@ uninstall() {
     fi
   done
 
-  # Remove symlinks for fonts, icons, themes, config, and local directories
+  # Remove symlinks for fonts, config, and local directories
   unlink_files "$dotfiles/fonts" "$HOME/.fonts"
-  unlink_files "$dotfiles/icons" "$HOME/.icons"
-  unlink_files "$dotfiles/themes" "$HOME/.themes"
   unlink_files "$dotfiles/config" "$HOME/.config"
   unlink_files "$dotfiles/bin" "$HOME/.local/bin"
   # unlink_files "$dotfiles/local/share" "$HOME/.local/share"
+  # unlink_files "$dotfiles/icons" "$HOME/.icons"
+  # unlink_files "$dotfiles/themes" "$HOME/.themes"
 
   # Remove vim_runtime symlink
   remove_symlink "$HOME/.vim_runtime" "$dotfiles/config/vim_runtime"
 
   # Remove vscode/argv.json symlink
   remove_symlink "$HOME/.vscode/argv.json" "$dotfiles/config/vscode/argv.json"
+
+  # Remove ssh config symlink
+  remove_symlink "$HOME/.ssh/config" "$dotfiles/config/ssh/config"
 }
 
 # Check command line arguments
