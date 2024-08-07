@@ -1,6 +1,4 @@
 
-#alias matlab='/home/kelen/bin/matlab/bin/matlab'
-
 # Fastfetch
 alias fetch='fastfetch -c $HOME/.config/fastfetch/kelen.jsonc'
 # VNC
@@ -32,15 +30,11 @@ alias du1='du --max-depth=1'
 alias hist='history 1 | grep'         # requires an argument
 alias openports='ss --all --numeric --processes --ipv4 --ipv6'
 alias pgg='ps -Af | grep'           # requires an argument
-alias aurupgrade='paru -Syu --aur'
 alias wttr='curl wttr.in'
 # alias ff='find . -name $1'
 
 # the fuck
 alias fk=fuck
-# alias f=fuck
-# alias k=fuck
-# alias fu=fuck
 alias wtf=fuck
 
 
@@ -104,23 +98,18 @@ if (( UID != 0 )); then
     alias dmesg='sudo dmesg -HL'
     alias install-grub='sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB'
     alias update-grub='sudo env LANG=en_US.UTF-8 grub-mkconfig -o /boot/grub/grub.cfg'
-    #alias pacman='sudo pacman'
-    #alias apt='sudo apt'
-    #alias apt-get='sudo apt-get'
-    #alias zypper='sudo zypper'
-    #alias dnf='sudo dnf'
-    #alias yum='sudo yum'
 
     #alias mount='sudo mount'
     #alias umount='sudo umount'
 
 fi
 
-alias pkgbak='pacman -Qeqn > ${DOTROOT}/extra/pkgbuilds/pacman_application.txt && pacman -Qeqm > ${DOTROOT}/extra/pkgbuilds/aur_application.txt && pacman -Qq > ${DOTROOT}/extra/pkgbuilds/pkglist.txt'
 # See https://wiki.archlinux.org/title/Pacman/Rosetta
 DISTRO=$(get_distro)
 case $DISTRO in
     *Arch*|*arch*)
+        alias aurupgrade='paru -Syu --aur'
+        alias pkgbak='pacman -Qeqn > ${DOTROOT}/extra/pkgbuilds/pacman_application.txt && pacman -Qeqm > ${DOTROOT}/extra/pkgbuilds/aur_application.txt && pacman -Qq > ${DOTROOT}/extra/pkgbuilds/pkglist.txt'
         alias update='sudo pacman -Syy'
         alias upgrade='sudo pacman -Syyu'
         alias install='sudo pacman -Sy'

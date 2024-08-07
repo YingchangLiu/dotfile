@@ -1,6 +1,6 @@
 # kelen's dotfiles
 
-***Warning***: I'm working with **Arch Linux**, **Debian** and **Gentoo**. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
+***Warning***: I'm working with **Arch Linux**, **Debian** and **Gentoo**. Do not blindly use my settings unless you know what that entails. Use at your own risk!
 
 ---
 
@@ -32,6 +32,9 @@ $ sh ./install uninstall
 ### Alias
 - wttr: weather
 - l/ll/la/l./lt etc.: ls commands
+- cp/mv/rm: Safety features
+- git: git commands
+- ex/cx: extract compressed files
 - package manager commands (pacman, apt, dnf, zypper, emerge)
     - install
     - remove
@@ -41,7 +44,8 @@ $ sh ./install uninstall
     - cleanup
     - search
     - provider
-    - etc. Please check in [shellrc/alias.sh](./shellrc/alias.sh) and [shellrc/functions.sh](./shellrc/functions.sh).
+- etc. 
+Please check in [shellrc/alias.sh](./shellrc/alias.sh) and [shellrc/functions.sh](./shellrc/functions.sh).
 
 ### Bin
 - ap/rp: path converter (from https://github.com/oldratlee/useful-scripts)
