@@ -1,7 +1,7 @@
 #!/bin/bash
 # Useful functions
 
-## read_paths "$@" - read paths from input, zsh and bash are different, so we need to define this function. see shellrc/zshfuns.zsh and shellrc/bashfuns.sh
+## split_args "$@" - read paths from input, zsh and bash are different, so we need to define this function. see shellrc/zshfuns.zsh and shellrc/bashfuns.sh
 
 # ex - archive extractor
 # usage: ex <file> [directory]
@@ -85,9 +85,10 @@ get_distro() {
 v2control() {
     if [ "$1" = "start" ] || [ "$1" = "stop" ]|| [ "$1" = "restart" ]; then
         if [[ $(ps --no-headers -o comm 1) == "systemd" ]]; then
-            sudo systemctl $1 v2ray v2raya
+            sudo systemctl start v2ray
+            sudo systemctl $1  v2raya
         elif [[ $(command -v openrc) ]]; then
-            sudo rc-service v2ray $1
+            sudo rc-service v2ray start
             sudo rc-service v2raya $1
         else
             echo "Neither systemd nor openrc is being used"
@@ -122,6 +123,32 @@ delete_branches_except() {
      eval $cmd
 }
 
+# Split the input arguments into an array using multiple delimiters
+split_args() {
+    # Temporarily set IFS to the desired delimiters
+    local IFS=': ,;|'
+    
+    # Enable sh_word_split in zsh if necessary
+    [ -n "$ZSH_VERSION" ] && setopt localoptions sh_word_split
+    
+    # Split the input string into an array
+    args_array=($1)
+}
+# 
+: <<'EOF'
+#!/usr/bin/env zsh
+# Split the input arguments into an array using multiple delimiters
+function split_args() {
+    local IFS=': ,;|'
+    read -r -A args_array <<< "$@"
+}
+#!/usr/bin/env bash
+function split_args() {
+    local IFS=': ,;|'
+    read -r -a args_array <<< "$@"
+}
+EOF
+
 
 ## set_path function is used to add directories to PATH.
 set_path(){
@@ -129,7 +156,7 @@ set_path(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    read_paths "$@"
+    split_args "$@"
 
     for i in "${paths[@]}";
     do
@@ -158,7 +185,7 @@ set_ld_library_path(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    read_paths "$@"
+    split_args "$@"
 
     for i in "${paths[@]}";
     do
@@ -187,7 +214,7 @@ set_library_path(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    read_paths "$@"
+    split_args "$@"
 
     for i in "${paths[@]}";
     do
@@ -215,7 +242,7 @@ set_cpath(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    read_paths "$@"
+    split_args "$@"
     for i in "${paths[@]}";
     do
         

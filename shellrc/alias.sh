@@ -155,7 +155,7 @@ case $DISTRO in
         alias reinstall='sudo emerge --ask --noreplace'
         alias cleanup='sudo emerge --ask --depclean --verbose=n'
         alias remove='sudo emerge --ask --depclean --verbose'
-        alias search='sudo emerge --search'
+        alias search='eix'
         alias provider='e-file'
 
         ;;

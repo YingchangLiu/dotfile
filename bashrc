@@ -20,7 +20,6 @@ export SHELLROOT="${DOTROOT}/shellrc"
 [[ ! -f $SHELLROOT/environment.sh ]] || source "$SHELLROOT/environment.sh" #2>/dev/null
 
 ## Load functions
-[[ ! -f $SHELLROOT/bashfuns.sh ]] || source "$SHELLROOT/bashfuns.sh" #2>/dev/null
 [[ ! -f $SHELLROOT/functions.sh ]] || source "$SHELLROOT/functions.sh" #2>/dev/null
 
 [[ ! -f $SHELLROOT/commonplugin.sh ]] || source $SHELLROOT/commonplugin.sh #2>/dev/null

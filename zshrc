@@ -12,7 +12,6 @@ export SHELLROOT="${DOTROOT}/shellrc"
 [[ ! -f $SHELLROOT/environment.sh ]] || source "$SHELLROOT/environment.sh" #2>/dev/null
 
 # Load functions
-[[ ! -f $SHELLROOT/zshfuns.zsh ]] || source "$SHELLROOT/zshfuns.zsh" #2>/dev/null
 [[ ! -f $SHELLROOT/functions.sh ]] || source "$SHELLROOT/functions.sh" #2>/dev/null
 
 # Load common plugin
