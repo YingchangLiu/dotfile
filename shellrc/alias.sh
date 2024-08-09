@@ -50,9 +50,8 @@ alias hosts2='sudo wget https://scaffrey.coding.net/p/hosts/d/hosts/git/raw/mast
 alias hosts3='sudo wget https://git.qvq.network/googlehosts/hosts/raw/master/hosts-files/hosts -O /etc/hosts'
 
 
-# unalias run-help
-alias help=run-help
-
+(( ${+aliases[run-help]} )) && unalias run-help
+alias help='run-help '
 
 ## Modified commands
 alias diff='diff --color=auto'

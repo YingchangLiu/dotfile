@@ -1,6 +1,7 @@
 #!/bin/bash
 # Useful functions
 
+## read_paths "$@" - read paths from input, zsh and bash are different, so we need to define this function. see shellrc/zshfuns.zsh and shellrc/bashfuns.sh
 
 # ex - archive extractor
 # usage: ex <file> [directory]
@@ -128,11 +129,7 @@ set_path(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    if [[ $SHELL == *"zsh"* ]]; then
-        IFS=': ' read -r -A paths <<< "$@"
-    else
-        IFS=': ' read -r -a paths <<< "$@"
-    fi
+    read_paths "$@"
 
     for i in "${paths[@]}";
     do
@@ -161,11 +158,7 @@ set_ld_library_path(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    if [[ $SHELL == *"zsh"* ]]; then
-        IFS=': ' read -r -A paths <<< "$@"
-    else
-        IFS=': ' read -r -a paths <<< "$@"
-    fi
+    read_paths "$@"
 
     for i in "${paths[@]}";
     do
@@ -194,11 +187,7 @@ set_library_path(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    if [[ $SHELL == *"zsh"* ]]; then
-        IFS=': ' read -r -A paths <<< "$@"
-    else
-        IFS=': ' read -r -a paths <<< "$@"
-    fi
+    read_paths "$@"
 
     for i in "${paths[@]}";
     do
@@ -226,11 +215,7 @@ set_cpath(){
     [[ "$(id -u)" -eq 0 ]] || [[ "$(id -u)" -ge 1000 ]] || return
 
     # Split the iput into an array using ' ' and ':' as the delimiters
-    if [[ $SHELL == *"zsh"* ]]; then
-        IFS=': ' read -r -A paths <<< "$@"
-    else
-        IFS=': ' read -r -a paths <<< "$@"
-    fi
+    read_paths "$@"
     for i in "${paths[@]}";
     do
         
