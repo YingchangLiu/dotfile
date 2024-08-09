@@ -99,11 +99,6 @@ install() {
   link_files "$dotfiles/config" "$HOME/.config"
   link_files "$dotfiles/bin" "$HOME/.local/bin"
 
-  # Special case for vim_runtime
-  if [ -d "$dotfiles/config/vim" ]; then
-    symlink "$dotfiles/config/vim" "$HOME/.vim_runtime"
-  fi
-
   # Symlink vscode/argv.json for gnome-keyring
   symlink "$dotfiles/config/vscode/argv.json" "$HOME/.vscode/argv.json"
 
@@ -136,9 +131,6 @@ uninstall() {
   unlink_files "$dotfiles/fonts" "$HOME/.local/share/fonts"
   unlink_files "$dotfiles/config" "$HOME/.config"
   unlink_files "$dotfiles/bin" "$HOME/.local/bin"
-
-  # Remove vim_runtime symlink
-  remove_symlink "$HOME/.vim_runtime" "$dotfiles/config/vim"
 
   # Remove vscode/argv.json symlink
   remove_symlink "$HOME/.vscode/argv.json" "$dotfiles/config/vscode/argv.json"
