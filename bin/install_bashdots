@@ -5,10 +5,10 @@
 # Create directories if they don't exist
 create_directories() {
   local dirs=(
-    "$HOME/.fonts"
     "$HOME/.config"
     "$HOME/.local/bin"
     "$HOME/.local/share"
+    "$HOME/.local/share/fonts"
     "$HOME/.vscode"
     "$HOME/.ssh"
   )
@@ -96,12 +96,9 @@ install() {
   done
 
   # Symlink fonts, config, and local directories
-  link_files "$dotfiles/fonts" "$HOME/.fonts"
+  link_files "$dotfiles/fonts" "$HOME/.local/share/fonts"
   link_files "$dotfiles/config" "$HOME/.config"
   link_files "$dotfiles/bin" "$HOME/.local/bin"
-  # link_files "$dotfiles/local/share" "$HOME/.local/share"
-  # link_files "$dotfiles/icons" "$HOME/.icons"
-  # link_files "$dotfiles/themes" "$HOME/.themes"
 
   # Special case for vim_runtime
   if [[ -d "$dotfiles/config/vim_runtime" ]]; then
@@ -136,12 +133,9 @@ uninstall() {
   done
 
   # Remove symlinks for fonts, config, and local directories
-  unlink_files "$dotfiles/fonts" "$HOME/.fonts"
+  unlink_files "$dotfiles/fonts" "$HOME/.local/share/fonts"
   unlink_files "$dotfiles/config" "$HOME/.config"
   unlink_files "$dotfiles/bin" "$HOME/.local/bin"
-  # unlink_files "$dotfiles/local/share" "$HOME/.local/share"
-  # unlink_files "$dotfiles/icons" "$HOME/.icons"
-  # unlink_files "$dotfiles/themes" "$HOME/.themes"
 
   # Remove vim_runtime symlink
   remove_symlink "$HOME/.vim_runtime" "$dotfiles/config/vim_runtime"
